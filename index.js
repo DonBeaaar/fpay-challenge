@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const { validateNumber } = require('./middleware/number');
 const { getPrimeNumberSequence } = require('./utils/number');
 const app = express();
 
@@ -9,22 +10,13 @@ app.get('/', (req, res) => {
   res.send('OK');
 });
 
-app.get('/check/:number', (req, res) => {
+app.get('/check/:number', validateNumber, (req, res) => {
   const { number } = req.params;
-  const parsedNumber = Math.trunc(Number(number.trim()));
-
-  if (!parsedNumber || parsedNumber <= 0) {
-    res.status(400).json({
-      ok: false,
-      message:
-        'Verifica que el numero ingresado sea valido y mayor o igual a 1',
-    });
-  }
 
   return res.json({
     ok: true,
     message: 'Secuencia de numeros primos',
-    sequence: getPrimeNumberSequence(parsedNumber),
+    sequence: getPrimeNumberSequence(number),
   });
 });
 

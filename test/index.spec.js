@@ -25,13 +25,13 @@ describe('index', () => {
     const res = await requestWithSupertest.get('/check/a');
     expect(res.status).toBe(400);
     expect(res.body.ok).toBe(false);
-    expect(res.body.message).toBe('Verifica que el numero ingresado sea valido y mayor o igual a 1');
+    expect(res.body.message).toBe('Verifica que el numero ingresado sea valido y mayor o igual a 2');
   });
 
   it('check sequence - error 0', async () => {
     const res = await requestWithSupertest.get('/check/0');
     expect(res.status).toBe(400);
     expect(res.body.ok).toBe(false);
-    expect(res.body.message).toBe('Verifica que el numero ingresado sea valido y mayor o igual a 1');
+    expect(res.body.message).toBe('Verifica que el numero ingresado sea valido y mayor o igual a 2');
   });
 });
