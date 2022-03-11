@@ -1,5 +1,6 @@
 const validateNumber = (req, res, next) => {
   const { number } = req.params;
+  // no truncar
   const parsedNumber = Math.trunc(Number(number.trim()));
 
   if (!parsedNumber || parsedNumber <= 1) {

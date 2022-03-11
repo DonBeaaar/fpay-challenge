@@ -1,22 +1,18 @@
 require('dotenv').config();
 const express = require('express');
-const { validateNumber } = require('./middleware/number');
-const { getPrimeNumberSequence } = require('./utils/number');
+const indexRoutes = require('./routes/index');
+const numberRoutes = require('./routes/number');
+
 const app = express();
 
 app.use(express.json());
+app.use(indexRoutes);
+app.use(numberRoutes);
 
-app.get('/', (req, res) => {
-  res.send('OK');
-});
-
-app.get('/check/:number', validateNumber, (req, res) => {
-  const { number } = req.params;
-
-  return res.json({
-    ok: true,
-    message: 'Secuencia de numeros primos',
-    sequence: getPrimeNumberSequence(number),
+app.all('*', (req, res) => {
+  return res.status(404).json({
+    ok: false,
+    message: 'Not found specified path',
   });
 });
 
