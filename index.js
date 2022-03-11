@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { getPrimeNumberSequence } = require('./utils/number');
 const app = express();
@@ -27,8 +28,8 @@ app.get('/check/:number', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log(`Listen in port ${3000}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Listen in port ${process.env.PORT}`);
 });
 
 const server = app;
