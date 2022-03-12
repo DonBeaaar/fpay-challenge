@@ -1,3 +1,5 @@
+const { getPrimeNumberSequence } = require('../utils/number');
+
 const sequencePrimeNumbersController = (req, res) => {
   const { number } = req.params;
 
