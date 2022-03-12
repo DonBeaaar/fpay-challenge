@@ -1,14 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const indexRoutes = require('./routes/index');
-const numberRoutes = require('./routes/number');
+const routes = require('./routes/index');
 
 const app = express();
 
 app.use(express.json());
 
-app.use(numberRoutes);
-app.use(indexRoutes);
+app.use(routes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Listen in port ${process.env.PORT}`);
