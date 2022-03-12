@@ -20,7 +20,7 @@ npm run start
 
 2. A new web service is now available on the local host that responds to URL:
 
-    http://127.0.0.1:3000/api/number
+    http://127.0.0.1:3000/api/${number}
 
 ## Testing
 
